@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row justify-content-center">
+  <div class="col-md-5">
+    <div class="card shadow-sm p-4 card-funny">
+
+      <h3 class="text-center mb-3">Create Account 😄</h3>
+      <p class="text-center small-joke mb-4">
+        Sign up to manage dreams you will chase… or dump.
+      </p>
+
+      <form method="post">
+        {% csrf_token %}
+
+        <div class="mb-3">
+          <label class="form-label">Username</label>
+          <input type="text" name="username" class="form-control" placeholder=" " required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input type="email" name="email" class="form-control" placeholder=" " required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input type="password" name="password1" class="form-control" placeholder="Don’t forget this one" required>
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label">Confirm Password</label>
+          <input type="password" name="password2" class="form-control" placeholder="Same password again" required>
+        </div>
+
+        <button type="submit" class="btn bucket-btn w-100">
+          Sign Up 🚀
+        </button>
+      </form>
+
+      <p class="text-center small-joke mt-3">
+        Already have an account?
+        <a href="/login/">Login here</a>
+      </p>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -8,3 +8,9 @@ def home (request):
 
 def add_dream (request):
     return render (request,"add_dream.html")
+
+def bucket (request):
+    return render (request,'bucket.html')
+
+def dustbin (request):
+    return render (request,'dustbin.html')

@@ -17,11 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from.import views
+from account.views import *
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home ,name ='home'),
-     path('add_dream', views.add_dream ,name ='add_dream'),
+    path('add_dream', views.add_dream ,name ='add_dream'),
+    path('bucket', views.bucket ,name ='bucket'),
+    path('dustbin', views.dustbin ,name ='dustbin'),
+    path('signup/', signup ,name ='signup'),
+    path('login/', login ,name ='login'),
     
 ]
