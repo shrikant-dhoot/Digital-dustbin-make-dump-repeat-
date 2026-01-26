@@ -23,10 +23,10 @@ from account.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home ,name ='home'),
-    path('add_dream', views.add_dream ,name ='add_dream'),
-    path('bucket', views.bucket ,name ='bucket'),
-    path('dustbin', views.dustbin ,name ='dustbin'),
+    path('add_dream', add_dream ,name ='add_dream'),
+    path('bucket', bucket ,name ='bucket'),
+    path('dustbin', dustbin ,name ='dustbin'),
     path('signup/', signup ,name ='signup'),
-    path('login/', login ,name ='login'),
+    path('login_view/', login_view ,name ='login'),
     
 ]

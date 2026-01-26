@@ -3,37 +3,39 @@
 
 <div class="card card-funny shadow-sm p-4">
   <h4 class="mb-3">Add a New Dream </h4>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label class="form-label">Dream Title</label>
+      <input type="text" class="form-control" name="dream" placeholder="example: Wake up at 5 AM" required >
+    </div>
 
-  <div class="mb-3">
-    <label class="form-label">Dream Title</label>
-    <input type="text" class="form-control" placeholder="example: Wake up at 5 AM">
-  </div>
+    <div class="mb-3">
+      <label class="form-label">Category</label>
+      <select class="form-select" name="career"  >
+        <option required>Career</option>
+        <option>Skill</option>
+        <option>Travel</option>
+        <option>Personal</option>
+        <option>other</option>
+      </select>
+    </div>
 
-  <div class="mb-3">
-    <label class="form-label">Category</label>
-    <select class="form-select">
-      <option>Career</option>
-      <option>Skill</option>
-      <option>Travel</option>
-      <option>Personal</option>
-      <option>other</option>
-    </select>
-  </div>
+    <div class="mb-4" name ="effort">
 
-  <div class="mb-4">
-
-    <label class="form-label">Effort Level</label><br>
-    <input type="radio" class="ms-3" id="Low" name="effort",value="Low">
-    <label for="Low">Low (jhoot)</label>  
-    <input type="radio" class="ms-3" id="Medium" name="effort",value="Medium">
-    <label for="Medium">Medium (maybe)</label> 
-    <input type="radio" class="ms-3" id="High" name="effort",value="High">
-    <label for="High">High ( definitely 😄)</label>
-  </div >
-  <div class ="d-flex flex-column gap-2">
-  <button class="btn bucket-btn w-100  "> Add to Bucket</button>
-  <button class="btn dump-btn w-100  ">🗑️ Send to Dustbin</button>
- </div>
+      <label class="form-label">Effort Level</label><br>
+      <input type="radio" class="ms-3" name="effort" id="Low"  value="Low">
+      <label for="Low" required >Low (jhoot)</label>
+      <input type="radio" class="ms-3"  name="effort" id="Medium" value="Medium">
+      <label for="Medium">Medium (maybe)</label>
+      <input type="radio" class="ms-3" name="effort" id="High"  value="High">
+      <label for="High">High ( definitely 😄)</label>
+    </div>
+    <div class="d-flex flex-column gap-2">
+      <button class="btn bucket-btn w-100  " type="submit" name="action" value="bucket" > Add to Bucket</button>
+      <button class="btn dump-btn w-100  " type="submit" name="action" value="dustbin">🗑️ Send to Dustbin</button>
+    </div>
+  </form>
 </div>
 
 {% endblock %}

@@ -1,17 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h4 class="mb-3">🪣 My Bucket</h4>
+<h4 class="mb-3">My Bucket</h4>
 <p class="small-joke">These dreams are still breathing.</p>
 
+{% for dream in dreams  %}
 <div class="card card-funny  p-3 mb-3">
-  <h5>Learn Python</h5>
-  <p class="small-joke">Effort: High</p>
-
+ 
+  <h5>{{dream.dream}}</h5>
+  <p class="small-joke">effort: {{dream.effort}}
+    <h4>mood right now : {{dream.jokes}}</h4>
+  </p>
+   
   <div class ="d-flex flex-column gap-2">
   <button class="btn btn-success  w-100">✔ Complete</button>
   <button class="btn dump-btn w-100">🗑️ Give Up</button>
   </div>
 </div>
 
+{% endfor %}
 {% endblock %}
