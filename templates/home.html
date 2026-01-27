@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<div class="text-center" >
+   <h1 class="fw-bold mb-3">
+    Welcome {{user.username}}
+  </h1>
+</div>
+
 <div class="text-center">
   <h1 class="fw-bold mb-3">
     Not all dreams deserve effort.<br>
@@ -10,8 +16,8 @@
     We store dreams. Motivation sold separately.
   </p>
 
-  <a href="/bucket" class="btn bucket-btn btn-lg me-3">🪣 Make a Bucket</a>
-  <a href="/dustbin" class="btn dump-btn btn-lg">🗑️ Dump a Dream</a>
+  <a href="/bucket" class="btn bucket-btn btn-lg me-3">🪣 My Bucket</a>
+  <a href="/dustbin" class="btn dump-btn btn-lg">🗑️ Dump Dream</a>
 </div>
 
 {% endblock %}

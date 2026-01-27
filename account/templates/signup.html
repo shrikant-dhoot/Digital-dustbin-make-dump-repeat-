@@ -15,22 +15,23 @@
 
         <div class="mb-3">
           <label class="form-label">Username</label>
-          <input type="text" name="username" class="form-control" placeholder=" " required>
+          <input type="text" name="username" class="form-control"  value="{{username }}" placeholder=" " required>
         </div>
 
         <div class="mb-3">
           <label class="form-label">Email</label>
-          <input type="email" name="email" class="form-control" placeholder=" " required>
+          <input type="email" name="email" class="form-control" value="{{email }}" placeholder=" " required>
         </div>
 
         <div class="mb-3">
           <label class="form-label">Password</label>
-          <input type="password" name="password1" class="form-control" placeholder="Don’t forget this one" required>
+          <input type="password" name="password" class="form-control"   placeholder="Don’t forget this one" required>
         </div>
 
         <div class="mb-4">
           <label class="form-label">Confirm Password</label>
-          <input type="password" name="password2" class="form-control" placeholder="Same password again" required>
+          <input type="password" name="confirm_password" class="form-control" placeholder="Same password again"
+            required>
         </div>
 
         <button type="submit" class="btn bucket-btn w-100">
@@ -40,8 +41,16 @@
 
       <p class="text-center small-joke mt-3">
         Already have an account?
-        <a href="/login_view/">Login here</a>
+        <a href="/login/">Login here</a>
       </p>
+
+      {% if messages %}
+      {% for message in messages %}
+      <p style="color: rgb(230, 13, 13);">
+        </style> {{message}}</p>
+      {% endfor %}
+      {% endif %}
+
 
     </div>
   </div>

@@ -13,6 +13,14 @@
       <form method="post">
         {% csrf_token %}
 
+        
+        {% if request.GET.next %}
+        <div class="alert alert-warning">
+          First login to  access Add, Bucket and dustbin
+        </div>
+        {% endif %}
+          
+
         <div class="mb-3">
           <label class="form-label">Username</label>
           <input type="text" name="username" class="form-control" placeholder="Your username" required>
@@ -36,6 +44,14 @@
       <p class="text-center small-joke mt-2">
         “Reality starts after login.” 😄
       </p>
+
+     
+      {% if messages %}
+      {% for message in messages %}
+      <p style="color: rgb(230, 13, 13);">
+        </style> {{message}}</p>
+      {% endfor %}
+      {% endif %}
 
     </div>
   </div>

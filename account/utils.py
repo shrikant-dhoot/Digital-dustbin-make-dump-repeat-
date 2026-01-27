@@ -43,27 +43,6 @@ bucket_jokes = [
     
     "Dream zinda hai… bas system hang hai",
     
-    "Dream zinda hai, par usne WhatsApp status ‘Busy’ laga rakha hai.",
-
-"Is dream ka plan clear hai: aaj nahi, kal bhi nahi.",
-
-"Dream bol raha hai: ‘Mujhe seriously mat le bhai’.",
-
-"Zinda hai, par effort airplane mode pe hai.",
-
-"Dream ke saath saath excuses bhi grow kar rahe hain.",
-
-"Is dream ka confidence high hai, kaam zero.",
-
-"Dream bolta hai: ‘Abhi mood nahi bana’.",
-
-"Ye dream gym membership jaisa hai — hai, use nahi hota.",
-
-"Dream active hai, bas owner inactive hai.",
-
-"Dream keh raha hai: ‘Bas ek Netflix episode ke baad start’.",
-    
-    
     
 ]
 

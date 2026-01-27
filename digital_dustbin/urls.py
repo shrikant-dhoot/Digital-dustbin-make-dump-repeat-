@@ -27,6 +27,7 @@ urlpatterns = [
     path('bucket', bucket ,name ='bucket'),
     path('dustbin', dustbin ,name ='dustbin'),
     path('signup/', signup ,name ='signup'),
-    path('login_view/', login_view ,name ='login'),
+    path('login/', login_view ,name ='login'),
+    path('logout/', logout_view ,name ='logout'),
     
 ]
