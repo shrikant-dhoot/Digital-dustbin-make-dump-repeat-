@@ -27,7 +27,11 @@ urlpatterns = [
     path('bucket', bucket ,name ='bucket'),
     path('dustbin', dustbin ,name ='dustbin'),
     path('signup/', signup ,name ='signup'),
+    path('dasboard/', dasboard ,name ='dasboard'),
     path('login/', login_view ,name ='login'),
     path('logout/', logout_view ,name ='logout'),
+    path('bucket_action/', bucket_action ,name ='bucket_action'),
+    path('dustbin_action/', dustbin_action ,name ='dustbin_action'),
+    
     
 ]

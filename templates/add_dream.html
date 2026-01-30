@@ -1,11 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="text-center" >
-   <h1 class="fw-bold mb-3">
+<div class="text-center">
+  <h1 class="fw-bold mb-3">
     Hi ! {{user.username}} add your dreams
   </h1>
 </div>
+
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{message.tags}}">
+  {{message}}
+</div>
+{% endfor %}
+{% endif %}
 
 <div class="card card-funny shadow-sm p-4">
   <h4 class="mb-3">Add a New Dream </h4>
@@ -13,12 +21,12 @@
     {% csrf_token %}
     <div class="mb-3">
       <label class="form-label">Dream Title</label>
-      <input type="text" class="form-control" name="dream" placeholder="example: Wake up at 5 AM" required >
+      <input type="text" class="form-control" name="dream" placeholder="example: Wake up at 5 AM" required>
     </div>
 
     <div class="mb-3">
       <label class="form-label">Category</label>
-      <select class="form-select" name="career"  >
+      <select class="form-select" name="career">
         <option required>Career</option>
         <option>Skill</option>
         <option>Travel</option>
@@ -27,18 +35,18 @@
       </select>
     </div>
 
-    <div class="mb-4" name ="effort">
+    <div class="mb-4" name="effort">
 
       <label class="form-label">Effort Level</label><br>
-      <input type="radio" class="ms-3" name="effort" id="Low"  value="Low">
-      <label for="Low" required >Low (jhoot)</label>
-      <input type="radio" class="ms-3"  name="effort" id="Medium" value="Medium">
+      <input type="radio" class="ms-3" name="effort" id="Low" value="Low">
+      <label for="Low" required>Low (jhoot)</label>
+      <input type="radio" class="ms-3" name="effort" id="Medium" value="Medium">
       <label for="Medium">Medium (maybe)</label>
-      <input type="radio" class="ms-3" name="effort" id="High"  value="High">
+      <input type="radio" class="ms-3" name="effort" id="High" value="High">
       <label for="High">High ( definitely 😄)</label>
     </div>
     <div class="d-flex flex-column gap-2">
-      <button class="btn bucket-btn w-100  " type="submit" name="action" value="bucket" > Add to Bucket</button>
+      <button class="btn bucket-btn w-100  " type="submit" name="action" value="bucket"> Add to Bucket</button>
       <button class="btn dump-btn w-100  " type="submit" name="action" value="dustbin">🗑️ Send to Dustbin</button>
     </div>
   </form>

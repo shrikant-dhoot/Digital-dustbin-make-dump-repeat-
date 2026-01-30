@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-4">
+
+    <!-- WELCOME -->
+    <div class="card shadow-sm p-4 mb-4 bg-light">
+        <h3>👋 Welcome, {{ request.user.username }}</h3>
+        <p class="small-joke mb-0">
+            Dreams don’t die — people quit 😌
+        </p>
+    </div>
+
+    <!-- STATS -->
+    <div class="row g-3 mb-4">
+        <div class="col-6 col-md-3">
+            <div class="card text-center shadow-sm p-3 bg-warning ">
+                <h4>{{ total_dream }}</h4>
+                <p class="card text-center shadow-sm p-3 bg-warning">Total Dreams</p>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <div class="card text-center shadow-sm p-3 bg-success text-black">
+                <h4>{{ completed }}</h4>
+                <p class="card text-center shadow-sm p-3 bg-success text-black">Completed</p>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <div class="card text-center shadow-sm p-3 bg-info ">
+                <h4>{{ bucket }}</h4>
+                <p class="card text-center shadow-sm p-3 bg-info ">In Bucket</p>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <div class="card text-center shadow-sm p-3 bg-danger ">
+                <h4>{{ dustbin }}</h4>
+                <p class="card text-center shadow-sm p-3 bg-danger text-dark ">Dustbin</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ACTION BUTTONS -->
+    <div class="card shadow-sm p-4 mb-4">
+        <div class="d-flex flex-column flex-md-row gap-2">
+            <a href="{% url 'add_dream' %}" class="btn btn-primary w-100">
+                Add New Dream
+            </a>
+            <a href="{% url 'bucket' %}" class="btn btn-success w-100">
+                🪣 Open Bucket
+            </a>
+            <a href="{% url 'dustbin' %}" class="btn btn-dark w-100">
+                🗑 Dustbin
+            </a>
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <h5>Progress</h5>
+        <div class="progress clean-progress" style="height:10px; background:#e5e7eb; border-radius:6px;">
+            <div class="progress-bar" role="progressbar" style="
+            width:auto;
+            background-color: #060606;
+            border-radius: 6px;
+            transition: width 0.4s ease;
+        ">
+            </div>
+        </div>
+        <h5>{{ progress }}%</h5>
+    </div>
+
+    {% endblock %}

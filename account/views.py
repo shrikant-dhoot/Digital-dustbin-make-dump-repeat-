@@ -1,5 +1,5 @@
-from django.http import HttpResponse,JsonResponse
-from django.shortcuts import render , redirect
+from django.http import HttpResponse
+from django.shortcuts import render , redirect,get_object_or_404
 from.models import * 
 from.utils import *
 from django.contrib.auth.models import User
@@ -90,6 +90,7 @@ def add_dream (request):
                career = career,
                effort = effort,
             )
+             messages.success(request,"dream add  successfully! into bucket " )
            
           elif action =="dustbin": 
                dustbin_dreams.objects.create(
@@ -98,6 +99,7 @@ def add_dream (request):
                career = career,
                effort = effort,
             )
+               messages.success(request,"dream remove successfully! into dustbin " )
           
      return render (request,"add_dream.html")
 
@@ -128,7 +130,85 @@ def dustbin (request):
      
     context = {'dustbin_dreams' : queryset}    
     return render (request,'dustbin.html',context)
+
+
+
+
+@login_required(login_url="login")
+def bucket_action (request):
+     if request.method =="POST":
+          dream_id = request.POST.get("dream_id")
+          action =  request.POST.get("action")
+          
+          dream = get_object_or_404(dreams,id=dream_id,user=request.user)
+          
+          if action=="complete":
+               
+               dream.completed = True
+               dream.save()   
+               messages.success(request,"dream achieve successfully !" )
+               
+          elif action == "give up":
+               
+            dustbin_dreams.objects.create(
+               user = request.user,     
+               dream = dream.dream,
+               career = dream.career,
+               effort = dream.effort,
+            )
+            
+            dream.delete()
+            messages.warning(request,"dream moved to dustbin")
+            
+            
+          elif action == "delete":
+               dream.delete()
+               messages.warning(request,"Dream deleted permanently")
+                 
+     return redirect("bucket")
+
+
+
+@login_required(login_url="login")
+def dustbin_action(request):
+     
+     if request.method =="POST":
+      dream_id = request.POST.get("dream_id")
+      action =  request.POST.get("action")
+          
+      dream = get_object_or_404(dustbin_dreams,id=dream_id,user=request.user)
+      
+      if action == "delete":
+          dream.delete()
+          messages.success(request,"dream permanetly deleted")
+            
+     return redirect("dustbin")
+                 
+          
+               
  
- 
+def dasboard(request):
+     
+     total_dream = dreams.objects.filter(user = request.user).count()
+     completed = dreams.objects.filter(user = request.user,completed = True).count()
+     bucket    = dreams.objects.filter(user = request.user,completed = False).count()
+     dustbin   = dustbin_dreams.objects.filter(user = request.user).count()
+     
+     
+     if total_dream > 0:
+          progress = int((completed / total_dream)*100)
+     else :
+          progress = 0      
+     
+     context = {
+          "total_dream" : total_dream,
+          "completed" : completed,
+          "bucket" : bucket,
+          "dustbin" : dustbin , 
+          "progress" : progress 
+     }
+     
+     
+     return render(request,'dasboard.html',context)         
 
  
